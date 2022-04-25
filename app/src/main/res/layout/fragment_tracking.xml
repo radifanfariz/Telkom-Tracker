@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+<!--        <import type="android.view.View"/>-->
+
+<!--        <variable-->
+<!--            name="viewModel"-->
+<!--            type="com.project.trackernity.viewmodels.TrackingViewModel" />-->
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/fragmentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".ui.fragments.TrackingFragment">
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:id="@+id/linearLayoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/sendDataBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/md_theme_dark_background"
+                android:src="@drawable/ic_baseline_send_30"
+                android:layout_gravity="left"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                bind:tint="@color/md_theme_light_onSecondary"
+                bind:rippleColor="@color/md_theme_light_onSecondary"
+                />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/sendDataPredictionBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/md_theme_dark_background"
+                android:src="@drawable/ic_baseline_location_on_30"
+                android:layout_gravity="left"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                bind:tint="@color/md_theme_light_onSecondary"
+                bind:rippleColor="@color/md_theme_light_onSecondary"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutBtnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/refreshBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/md_theme_dark_background"
+                android:src="@drawable/ic_baseline_refresh_30"
+                android:layout_gravity="left"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="15dp"
+                bind:tint="@color/md_theme_light_onSecondary"
+                bind:rippleColor="@color/md_theme_light_onSecondary"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/loadingDropdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                bind:indicatorColor="@color/md_theme_dark_background"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/md_theme_dark_background"
+                android:visibility="gone" />
+        </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/myLocationBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/md_theme_dark_background"
+            android:src="@drawable/ic_baseline_my_location_30"
+            android:layout_gravity="right"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            bind:tint="@color/md_theme_light_onSecondary"
+            bind:rippleColor="@color/md_theme_light_onSecondary"
+            />
+
+        <include
+            android:id="@+id/contentIncluded"
+            layout="@layout/layout_bottom_sheet" />
+
+        <!--    <TextView-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="match_parent"-->
+        <!--        android:textSize="100dp"-->
+        <!--        android:textColor="@color/teal_200"-->
+        <!--        android:text="Test"/>-->
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

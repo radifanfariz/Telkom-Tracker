@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShapeAppearanceOverlay.App.CornerCut" parent="">
+        <item name="cornerSize">10%</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
+    <style name="roundedButton">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+    </style>
+
+    //////////////Alert Style///////////////////
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.Material3.Dialog.Alert">
+        <item name="colorPrimary">@color/md_theme_dark_background</item>
+        <item name="colorSecondary">@color/md_theme_dark_background</item>
+        <item name="colorSurface">@color/md_theme_base_primary</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_dark_background</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text</item>
+    </style>
+
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">
+            @color/md_theme_dark_background
+        </item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/md_theme_dark_background</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/md_theme_dark_background</item>
+    </style>
+
+    <style name="LoadingAlertDialogTheme" parent="ThemeOverlay.Material3.Dialog.Alert">
+        <item name="colorPrimary">@color/md_theme_dark_background</item>
+        <item name="colorSecondary">@color/md_theme_dark_background</item>
+        <item name="colorSurface">@color/md_theme_light_onSecondary</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_dark_background</item>
+    </style>
+
+
+    /////////////////CardView Style//////////////////////
+
+    <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Card</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="rippleColor">@color/md_theme_dark_background</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Card" parent="">
+        <item name="colorPrimary">@color/md_theme_light_onSecondary</item>
+        <item name="colorSecondary">@color/md_theme_light_onSecondary</item>
+        <item name="colorSurface">@color/md_theme_base_primary</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_light_onSecondary</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="expandedBarTextStyle" parent="AppTheme">
+        <item name="android:textSize">0sp</item>
+        <item name="expandedTitleTextColor">@android:color/transparent</item>
+    </style>
+
+    <style name="TextStyle" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textColor">@color/md_theme_light_onSecondary</item>
+    </style>
+
+    //////exposed dropdown style/////////
+    <style name="dropDownBackgroundColor" parent="Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense">
+        <item name="colorOnSurface">@color/md_theme_light_onSecondary</item>
+    </style>
+
+</resources>

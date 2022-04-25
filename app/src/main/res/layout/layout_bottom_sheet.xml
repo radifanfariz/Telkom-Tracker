@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.project.trackernity.viewmodels.TrackingViewModel" />
+
+        <variable
+            name="viewModel2"
+            type="com.project.trackernity.viewmodels.MainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="300dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <!--        Bottom sheet content 3-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/rounded_layout"
+            android:backgroundTint="@color/md_theme_dark_background"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/btnService"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/md_theme_dark_background"
+                android:text="@string/start"
+                android:textColor="@color/md_theme_light_onSecondary"
+                android:textSize="@dimen/font_size_16"
+                app:btnToggleText="@{viewModel.isTracking}"
+                app:icon="@drawable/ic_tracking"
+                app:iconGravity="textStart"
+                app:iconTint="@color/md_theme_light_onSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:rippleColor="@color/md_theme_light_onSecondary"
+                app:shapeAppearanceOverlay="@style/roundedButton" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--        Bottom sheet content 2-->
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:translationY="60dp"
+            android:background="@drawable/rounded_layout"
+            android:backgroundTint="@color/md_theme_light_onSecondary"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintHeight_default="spread">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_layout"
+                android:backgroundTint="@color/md_theme_light_onSecondary">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="0sp"
+                    app:collapsedTitleTextColor="@color/md_theme_light_onSecondary"
+                    app:contentScrim="@color/md_theme_base_primary"
+                    app:expandedTitleTextColor="@android:color/transparent"
+                    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+                    app:title="@string/app_name">
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="30dp"
+                        android:background="@drawable/rounded_search_layout"
+                        android:backgroundTint="@color/md_theme_base_primary"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="20dp">
+
+                        <ImageButton
+                            android:id="@+id/logoutBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true"
+                            android:src="@drawable/ic_baseline_exit_to_app_34"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            app:tint="@color/md_theme_dark_background" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/find_markers_around_you"
+                            android:textColor="@color/md_theme_light_onSecondary"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/type_a_keyword_remarks"
+                            android:textColor="@color/md_theme_light_onSecondary"
+                            android:textSize="20sp" />
+
+                        <HorizontalScrollView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/chipGroup"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/searchBarInput"
+                                app:singleLine="true"
+                                app:singleSelection="true"
+                                app:selectionRequired="true">
+
+                                <!-- Chips can be declared here, or added dynamically. -->
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chip_1"
+                                    style="@style/Widget.Material3.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:text="@string/alpro"/>
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chip_3"
+                                    style="@style/Widget.Material3.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="false"
+                                    android:text="@string/prediksi_gangguan"/>
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chip_2"
+                                    style="@style/Widget.Material3.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="false"
+                                    android:text="@string/gangguan"/>
+
+                            </com.google.android.material.chip.ChipGroup>
+                        </HorizontalScrollView>
+
+                        <LinearLayout
+                            android:id="@+id/lldropdownOthers"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:visibility="visible"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tregDropdownLayout"
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="2dp"
+                                android:hint="@string/prompt_treg"
+                                app:boxBackgroundColor="@color/md_theme_dark_background"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="parent">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/tregDropdown"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:maxLines="1"
+                                    android:textSize="@dimen/font_size_14"
+                                    android:inputType="none"
+                                    android:textColor="@color/md_theme_light_onPrimary" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/witelDropdownLayout"
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="32dp"
+                                android:hint="@string/prompt_witel"
+                                app:boxBackgroundColor="@color/md_theme_dark_background"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="parent">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/witelDropdown"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:maxLines="1"
+                                    android:textSize="@dimen/font_size_14"
+                                    android:inputType="none"
+                                    android:textColor="@color/md_theme_light_onPrimary" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lldropdown"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="start"
+                            android:visibility="visible"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:id="@+id/head_layout"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="2dp"
+                                android:hint="@string/prompt_from"
+                                app:boxBackgroundColor="@color/md_theme_dark_background"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="parent">
+                                <AutoCompleteTextView
+                                    android:id="@+id/headDropdown"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:maxLines="1"
+                                    android:textSize="@dimen/font_size_14"
+                                    android:inputType="none"
+                                    android:textColor="@color/md_theme_light_onPrimary" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <View
+                                android:layout_width="30dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/ic_baseline_horizontal_rule_24"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:id="@+id/tail_layout"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:hint="@string/prompt_to"
+                                app:boxBackgroundColor="@color/md_theme_dark_background"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="parent">
+                                <AutoCompleteTextView
+                                    android:id="@+id/tailDropdown"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:maxLines="1"
+                                    android:textSize="@dimen/font_size_14"
+                                    android:inputType="none"
+                                    android:textColor="@color/md_theme_light_onPrimary" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/lldropdownOthers2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="start"
+                            android:visibility="visible"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/routeDropdownLayout"
+                                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="334dp"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/prompt_routes"
+                                app:boxBackgroundColor="@color/md_theme_dark_background"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="parent">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/routeDropdown"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:maxLines="1"
+                                    android:textSize="@dimen/font_size_14"
+                                    android:inputType="none"
+                                    android:textColor="@color/md_theme_light_onPrimary" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <Button
+                            android:id="@+id/searchInputBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/md_theme_light_onSecondary"
+                            android:text="@string/search"
+                            android:textColor="@color/md_theme_dark_background"
+                            android:textSize="@dimen/font_size_16"
+                            app:icon="@drawable/ic_baseline_search_24"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/md_theme_dark_background"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:rippleColor="@color/md_theme_light_primaryContainer"
+                            android:contentDescription="@string/search"/>
+<!--                        <ImageButton-->
+<!--                            android:id="@+id/searchInputBtn"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:minWidth="80dp"-->
+<!--                            android:src="@drawable/search_btn"-->
+<!--                            android:contentDescription="@string/search"/>-->
+                    <LinearLayout
+                        android:id="@+id/lldropdown2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/errorTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="center"
+                            android:text="Something Wrong !!!"
+                            android:textColor="@color/md_theme_dark_onError"
+                            />
+                        <Button
+                            android:id="@+id/refreshBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/refresh"
+                            android:textColor="@color/md_theme_light_onPrimary"
+                            android:backgroundTint="@color/md_theme_dark_background"
+                            app:rippleColor="@color/md_theme_light_onSecondary" />
+                    </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lldropdown3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                            android:id="@+id/loadingDropdown"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:indicatorColor="@color/md_theme_dark_background"
+                            android:indeterminate="true"
+                            android:indeterminateTint="@color/md_theme_dark_background"
+                            android:visibility="gone" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+<!--                    <com.google.android.material.appbar.MaterialToolbar-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="?attr/actionBarSize"-->
+<!--                        android:background="@drawable/rounded_layout"-->
+<!--                        android:backgroundTint="@android:color/transparent"-->
+<!--                        app:titleTextColor="@color/md_theme_light_onSecondary" />-->
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp">
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/loadingIndicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/md_theme_dark_background"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/errorImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/image_404"
+                        android:visibility="gone"
+                        android:contentDescription="@string/error_image" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                </FrameLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
