@@ -136,7 +136,7 @@ class LoginFragment : Fragment() {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 var now = Instant.now()
                 if(now.isAfter(instantEnd)){
-                    Toast.makeText(requireContext(), "App has expired...!!!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "App has  expired...!!!", Toast.LENGTH_LONG).show()
                 }else{
                     Toast.makeText(requireContext(), "App is valid until ${endDateTime}", Toast.LENGTH_LONG).show()
                     loadingProgressBar.visibility = View.VISIBLE
